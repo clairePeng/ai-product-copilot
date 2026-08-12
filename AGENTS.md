@@ -117,3 +117,15 @@ P0只用于真正可能阻塞：
 5. 不修改原始需求文件。
 6. 不修改项目规则文件。
 7. 生成报告后，向用户说明报告文件的路径。
+
+## Available Workflows
+
+### Requirement Review
+
+当用户要求评审需求时，按照：
+
+`workflows/requirement-review-workflow.md`
+
+执行。
+
+不要要求用户手动指定 Prompt、Workflow 或输出目录，除非相关文件不存在或存在歧义。
