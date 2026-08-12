@@ -94,3 +94,26 @@ P0只用于真正可能阻塞：
 默认情况下，Agent只能读取需求文件和Prompt规则文件。
 
 如果需要创建评审结果文件、修改代码或修改其他项目文件，必须先获得用户明确要求。
+
+## Review Report Generation
+
+当用户明确要求“生成评审报告”或类似任务时：
+
+1. 创建 `review-results/` 目录（如果不存在）。
+2. 根据需求文件名称生成对应的报告文件。
+3. 报告文件命名规则：
+
+`<requirement-file-name>-review.md`
+
+例如：
+
+`test-data/requirement-001.md`
+
+对应：
+
+`review-results/requirement-001-review.md`
+
+4. 报告内容必须严格按照 `prompts/requirement-review.md` 中规定的结构生成。
+5. 不修改原始需求文件。
+6. 不修改项目规则文件。
+7. 生成报告后，向用户说明报告文件的路径。
