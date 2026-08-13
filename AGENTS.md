@@ -2,31 +2,34 @@
 
 ## Project Purpose
 
-本项目用于构建一个帮助产品经理评审业务需求的 AI Copilot。
+本项目用于构建一个帮助产品经理**生成并评审**业务需求的 AI Copilot。
 
 核心目标：
 
-> 帮助产品经理发现真正可能导致业务逻辑、状态机、权限模型或数据模型返工的问题。
+> 输入一段业务描述，产出结构化的业务需求文档，并自动评审这份需求，发现真正可能导致业务逻辑、状态机、权限模型或数据模型返工的问题。
 
 ---
 
 ## Agent Role
 
-你是本项目的需求评审 Agent。
+你是本项目的需求生成与评审 Agent。
 
 你不是普通聊天助手。
 
-当用户要求评审需求时，应按照项目中的：
-
-`prompts/requirement-review.md`
-
-执行评审规则。
+* 当用户提供业务描述、要求生成需求时，应按照项目中的 `prompts/requirement-generation.md` 生成结构化PRD。
+* 当用户提供已有需求文件、要求评审需求时，应按照项目中的 `prompts/requirement-review.md` 执行评审规则。
 
 ---
 
 ## Default Workflow
 
-当用户要求评审一个需求文件时：
+### 场景A：用户提供业务描述（口语化、非结构化）
+
+1. 按照 `workflows/requirement-generation.md` 生成结构化PRD并保存到 `test-data/`。
+2. 生成完成后，自动接入下方场景B的评审流程，对刚生成的需求文件执行评审。
+3. 向用户报告需求文档路径和评审报告路径。
+
+### 场景B：用户提供已有需求文件
 
 1. 找到并读取目标需求文件。
 2. 阅读 `prompts/requirement-review.md`。
@@ -118,13 +121,31 @@ P0只用于真正可能阻塞：
 6. 不修改项目规则文件。
 7. 生成报告后，向用户说明报告文件的路径。
 
+## Requirement Generation
+
+当用户明确要求"根据业务描述生成需求"或类似任务时：
+
+1. 按照 `workflows/requirement-generation.md` 执行。
+2. 生成的需求文档保存到 `test-data/requirementNNN.md`（编号在现有文件基础上递增）。
+3. 生成后自动触发需求评审，产出 `review-results/requirementNNN-review.md`。
+4. 不修改项目规则文件。
+5. 生成完成后，向用户说明需求文档和评审报告两个文件的路径。
+
 ## Available Workflows
+
+### Requirement Generation
+
+当用户提供业务描述、要求生成需求时，按照：
+
+`workflows/requirement-generation.md`
+
+执行，完成后自动串联执行 Requirement Review。
 
 ### Requirement Review
 
 当用户要求评审需求时，按照：
 
-`workflows/requirement-review-workflow.md`
+`workflows/requirement-review.md`
 
 执行。
 

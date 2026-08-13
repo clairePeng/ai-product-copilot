@@ -4,7 +4,7 @@
 
 读取：
 
-- context/project-context.md
+- docs/project-context.md
 - rules/review-rules.md
 
 ---

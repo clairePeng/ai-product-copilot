@@ -2,7 +2,7 @@
 
 ## Project
 
-Requirement Review Agent
+Requirement Generation & Review Agent
 
 ## User
 
@@ -10,8 +10,8 @@ Requirement Review Agent
 
 ## Purpose
 
-帮助产品经理快速发现需求中的核心歧义、
-缺失业务规则和设计风险。
+输入一段业务描述，帮助产品经理生成结构化业务需求文档，
+并快速发现需求中的核心歧义、缺失业务规则和设计风险。
 
 ## Domain
 
@@ -24,7 +24,7 @@ Requirement Review Agent
 
 ## Output
 
-结构化需求评审报告。
+结构化业务需求文档（PRD） + 对应的结构化需求评审报告。
 
 ## Principle
 
